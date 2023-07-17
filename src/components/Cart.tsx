@@ -12,7 +12,6 @@ import {
   HiOutlineTrash,
 } from 'react-icons/hi';
 import { Button } from './ui/button';
-import { IProduct } from '@/types/globalTypes';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import {
   addToCart,
@@ -21,8 +20,7 @@ import {
 } from '@/redux/features/cart/cartSlice';
 
 export default function Cart() {
-  const total = 0;
-  const { products } = useAppSelector((state) => state.cart);
+  const { products, total } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   return (
