@@ -7,22 +7,10 @@ import { useGetProductsQuery } from '@/redux/api/apiSlice';
 import { useAppSelector } from '@/redux/hook';
 import { setPriceRange, toggleState } from '@/redux/product/productSlice';
 import { IProduct } from '@/types/globalTypes';
-import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 export default function Products() {
-  // const [data, setData] = useState<IProduct[]>([]);
-  // useEffect(() => {
-  //   fetch('./data.json')
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  // }, []);
-
   const { data, error, isLoading } = useGetProductsQuery(undefined);
-
-  console.log(data);
-  console.log(error);
-
   const { toast } = useToast();
 
   const { priceRange, status } = useAppSelector((state) => state.product);
@@ -31,6 +19,19 @@ export default function Products() {
   const handleSlider = (value: number[]) => {
     dispatch(setPriceRange(value[0]));
   };
+
+  if (isLoading) {
+    <div className="flex items-center justify-center space-x-2">
+      <div className="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
+        <div className="h-48 rounded-t dark:bg-gray-700"></div>
+        <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-gray-900">
+          <div className="w-full h-6 rounded dark:bg-gray-700"></div>
+          <div className="w-full h-6 rounded dark:bg-gray-700"></div>
+          <div className="w-3/4 h-6 rounded dark:bg-gray-700"></div>
+        </div>
+      </div>
+    </div>;
+  }
 
   let productsData;
 
