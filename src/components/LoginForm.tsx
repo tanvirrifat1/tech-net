@@ -40,7 +40,6 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
   }, [user.email, isLoading]);
 
   const onSubmit = (data: LoginFormInputs) => {
-    console.log(data);
     dispatch(loginUser({ email: data.email, password: data.password }));
   };
 
