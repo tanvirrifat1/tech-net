@@ -8,12 +8,6 @@ import {
   usePostCommentMutation,
 } from '@/redux/product/productApi';
 
-const dummyComments = [
-  'Bhalo na',
-  'Ki shob ghori egula??',
-  'Eta kono product holo ??',
-  '200 taka dibo, hobe ??',
-];
 interface IProps {
   id: string;
 }
